@@ -1,0 +1,31 @@
+<div class="main-container">
+    <div class="container" *ngFor="let beer of beers">
+        <div class="image-container">
+            <img src={{beer.image_url}} alt="beer image" srcset="" class="beer-image">
+        </div>
+        <div class="beer-intro">
+            <h1>{{beer.name}}</h1>
+            <h3>{{beer.tagline}}</h3>
+            <div>
+                <p class="beer-description">{{beer.description}}</p>
+                <p *ngIf="beer.ph" class="beer-ph">Vol. {{beer.ph}}%</p>
+            </div>
+            <button (click)="getBeerDetails(beer.id)">More Details</button>
+            <div *ngIf="expand" class="more-info">
+                <div>
+                    <h4>Food Pairing</h4>
+                    <div *ngFor="let food of beer.food_pairing">
+                        <div>{{food}}</div>
+                    </div>
+                </div>
+                <div>
+                    <h4>Ingredients</h4>
+                    <div *ngFor="let key of ObjectKeys(beer.ingredients)">
+                        <div>{{key}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
